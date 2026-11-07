@@ -8,6 +8,7 @@ add_executable(shape_demo
     src/main.cpp
     src/Circle.cpp
     src/Rectangle.cpp
-    )
+    src/Logger.cpp    
+)
 
 target_include_directories(shape_demo PRIVATE include)

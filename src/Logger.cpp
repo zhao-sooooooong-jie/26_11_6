@@ -18,7 +18,7 @@ void Logger::log(Level lv, const std::string& msg, const char* file, int line) {
 
     if (lv < minLevel) return;
     std::time_t now = std::time(0);
-    std::tm* tmv{};
+    std::tm tmv{};
 
 #if defined(_WIN32)
     localtime_s(&tmv, &now);
@@ -26,7 +26,7 @@ void Logger::log(Level lv, const std::string& msg, const char* file, int line) {
     localtime_r(&now, &tmv);
 #endif
     char timeStr[20];
-    std::strftime(timeStr, sizeof(timeStr), "%Y-%m-%d %H:%M:%S", tmv);
+    std::strftime(timeStr, sizeof(timeStr), "%Y-%m-%d %H:%M:%S", &tmv);
     std::ostream& os = (lv == Level::ERROR) ? std::cerr : std::cout;
     os << "[" << timeStr << "] [" << levelName(lv) << "] "
        << file << ":" << line << " - " << msg << std::endl;

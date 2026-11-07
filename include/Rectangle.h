@@ -1,10 +1,12 @@
 #pragma once
 #include "Shape.h"
+#include "Logger.h"
 
 class Rectangle : public Shape{
 public:
     Rectangle(double w,double h)
-    :Shape("Rectangle"),
+    :
+    Shape("Rectangle"),
     m_w(w),
     m_h(h){}
     double area() const override;
